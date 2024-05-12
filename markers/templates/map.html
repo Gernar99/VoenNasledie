@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>Военно-историческое наследие. Отечественная война 1812 года.</title>
+    <link rel="stylesheet" href="../static/css/leaflet.css">
+    <link rel="stylesheet" href="../static/css/mapstyle.css">
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="../static/js/leaflet.js"></script>
+    <script src="../static/js/Granica_3.js"></script>
+    <script src="../static/js/Cities_6.js"></script>
+    <script src="../static/js/Gidronimy_5.js"></script>
+    <script src="../static/gj/GranicaLine.js"></script>
+    <script src="../static/js/Toponimy_2.js"></script>
+    <script src="../static/js/ToponimyLine_4.js"></script>
+    <script src="../static/js/markersdata.js"></script>
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/src/MarkerCluster.js"></script>
+    <link rel="stylesheet" href="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster-src.js"></script>
+    <script src="../static/js/_0.js"></script>
+    <link rel="stylesheet" href="../static/src/L.Control.Sidebar.css">
+    <script src="../static/src/L.Control.Sidebar.js"></script>
+    <script src="../static/js/L.Control.Layers.Tree.js"></script>
+    <link rel="stylesheet" href="../static/css/L.Control.Layers.Tree.css">
+    <link rel="icon" type="image/png" href="../static/images/icon/MonumentIcon.svg"/>
+    <script src="../static/js/slides.js"></script>
+    <link rel="stylesheet" href="../static/css/slider.css">
+    <script src="../static/js/123.js"></script>
+    <link rel="stylesheet" href="../static/Leaflet.defaultextent-master/dist/leaflet.defaultextent.css">
+    <script src="../static/Leaflet.defaultextent-master/dist/leaflet.defaultextent.js"></script>
+    <script src="../static/js/chel.js"></script>
+    <script src="../static/js/or.js"></script>
+    <script src="../static/js/topoints_json.js"></script>
+    <script src="../static/js/Ngranica.js"></script>
+    <link rel="stylesheet" href="../static/src/leaflet-search.css" />
+    <script src="../static/Leaflet.Dialog-master/Leaflet.Dialog.js"></script>
+    <link rel="stylesheet" href="../static/Leaflet.Dialog-master/Leaflet.Dialog.css">
+    <link rel="stylesheet" href="../static/Leaflet.Legend-master/src/leaflet.legend.css">
+    <script src="../static/Leaflet.Legend-master/src/leaflet.legend.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/preloader.css">
+    <script src="../static/js/leaflet.markercluster.layersupport.js"></script>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/leaflet.textpath.js"></script>
+    <script src="../static/Leaflet.EasyButton-master/src/easy-button.js"></script>
+    <script src="../static/src/leaflet-search.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="map">
+    <span class="leaflet-layerstree-closed leaflet-layerstree-hide"><img src="../static/images/icon/MonumentIcon.svg"></span>
+    <a href="/">
+        <button id="backButton">На главную</button>
+    </a> 
+</div>
+<script src="../static/map.js"></script>
+
+<div id="sidebar"> </div>
+<div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor"
+        d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+      </path>
+    </svg>
+</div>
+
+<script>
+    document.getElementsByClassName( 'leaflet-control-attribution' )[0].style.display = 'none';
+//-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    window.onload = function () {
+        document.body.classList.add('loaded_hiding');
+        window.setTimeout(function () {
+          document.body.classList.add('loaded');
+          document.body.classList.remove('loaded_hiding');
+        }, 500);
+      }
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    var stateChangingButton = L.easyButton({
+        states: [{
+            stateName: 'zoom-to-forest',        // name the state
+            icon:      '<img src="../static/images/32879-info-clipart.png" width="16" height="16">',               // and define its properties
+            title:     'Информация о сайте',
+            alert: 'Информация о сайте', // like its title
+            onClick: function(btn, map) {       // and its callback
+
+                // change state on click!
+                openSidebarInfo();
+            }
+        }]
+    }).addTo(map);
+
+    function openSidebarInfo() {
+        sidebar.toggle();
+        var popupContentReg=' ';
+        //-----------------ДОБАВИТЬ_МЕДИА?-------------------//
+        sidebar.setContent('<h1>'+ "Интерактивная карта «Исторического наследия Республики Башкортостан»" + '</h1>' +
+        "<p>Содержит:"+
+        "<p>– места формирования полков;"+
+        "<p>– маршруты их передвижения ;" +
+        "<p>– места, связанные с мемориальной практикой (монументы, памятники);" +
+        "<p>– места, связанные с башкирскими полками в рамках устной традиции." +
+        '<p align="center"><button id="dopinfo" onclick="dopinfo_click()">Редактор </button>' + popupContentReg);
+        showSlides();
+    }
+    
+    function dopinfo_click(){
+        window.open("/admin/", '_blank');
+        }
+    //------------------------------------//
+    //------------------------------------//
+    //------------------------------------//
+    //------------------------------------//
+    function makeFullScreen() {
+        var divObj = document.getElementsByClassName("Image");
+        divObj[slideIndex-1].requestFullscreen();
+
+    }
+    var sidebar = L.control.sidebar('sidebar', {
+        position: 'left'
+    });
+    var home=document.getElementsByClassName('leaflet-control-defaultextent-toggle');
+    getDataAddMarkers = function( {label, value, map, exclamation} ) {
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+    };
+    map.addControl(sidebar);
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    function chic(){
+
+        var testElements = document.getElementsByClassName('leaflet-marker-icon');
+        for(var j=0;j<testElements.length;j++){
+            if(testElements[j].src!=undefined){
+            if(testElements[j].src.match("../static/images/icon/MonumentIconClick.svg"))
+                testElements[j].src="../static/images/icon/MonumentIcon.svg";
+            if(testElements[j].src.match("../static/images/icon/ToponymIconClick.svg"))
+                testElements[j].src="../static/images/icon/ToponymIcon.svg";
+            if(testElements[j].src.match("../static/images/icon/CityIconClick.svg"))
+                testElements[j].src="../static/images/icon/CityIcon.svg";
+            if(testElements[j].src.match("../static/images/icon/FortIconClick.svg"))
+                testElements[j].src="../static/images/icon/FortIcon.svg";
+            if(testElements[j].src.match("../static/images/icon/RegimentIconClick.svg"))
+                testElements[j].src="../static/images/icon/RegimentIcon.svg";
+            if(testElements[j].src.match("../static/images/icon/UezdIconClick.svg"))
+                testElements[j].src="../static/images/icon/UezdIcon.svg";
+            
+            }
+        }
+    };
+    map.on('click', function () {
+        sidebar.hide();
+        chic();
+    });
+    sidebar.on('hidden', function () {
+        chic();
+        var video = document.getElementsByClassName('Video');
+        for(var j=0;j<video.length;j++){
+            video[j].pause();
+        }
+    });
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../static/css/mainpage.css">
+    	<!-- Шрифты с Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+		<header>
+            <div class="headercontainer">
+                <a href="" class="navbarlogo">
+                    Историческое наследие
+                </a>
+                <nav>
+                    <ul class="top-menu">
+                        <li><a href="#">О системе</a></li>
+                        <li><a href="#">О нас</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+        </header>
+		
+		<div class="parallax">
+            <h1> ВОЕННО-ИСТОРИЧЕСКОЕ НАСЛЕДИЕ <br> РЕСПУБЛИКИ БАШКОРТОСТАН <h1>
+        </div>
+		<section>
+            <div class="container">
+                <div class="gis1">
+                    <div class="gisphoto1">
+                        
+                    </div>
+                    <div class="gisinfo1">
+                        <div class="gisnazvanie1">
+                            <h1>Отечественная война 1812 года</h1>
+                        </div>
+        
+                        <div class="gisopisanie1">
+                            <p>Отечественная война 1812 года началась 12 июня - 
+                                в этот день войска Наполеона пересекли реку Неман, 
+                                развязав войны между двумя коронами французской и 
+                                российской. Эта война продолжалась до 14 декабря 1812 года,
+                                 завершившись полной и безоговорочной победой русских и 
+                                 союзнических войск. </p>
+                        </div>
+                        
+                        <a href="/otechestvennaya_voina_1812/" class="btn">Перейти на карту</a>
+                    </div>
+                </div>
+
+                <div class="gis2">
+                    <div class="gisinfo2">
+                        <div class="gisnazvanie2">
+                            <h1>Великая Отечественная война</h1>
+                        </div>
+        
+                        <div class="gisopisanie2">
+                            <p>Великая Отечественная война (1941-1945) – война Советского Союза 
+                                против вторгшихся на советскую территорию нацистской Германии и 
+                                ее союзников (Словакии, Венгрии, Италии, Финляндии, Румынии, Венгрии,
+                                 Болгарии и Хорватии). Великая Отечественная война (ВОВ) является 
+                                 важнейшей составной частью Второй мировой войны – самой кровопролитной
+                                  в истории человечества, завершившейся победой СССР над Германией.</p>
+                        </div>
+                        
+                        <a href="/velikaya_otechestvennaya_voina_1945/" class="btn">Перейти на карту</a>
+                    </div>
+                    <div class="gisphoto2">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </section>
+	</div>
+</body>
+</html>

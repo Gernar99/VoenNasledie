@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>Военно-историческое наследие. Великая Отечественная война.</title>
+    <link rel="stylesheet" href="../static/css/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="../static/css/mapstyle.css">
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="../static/js/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="../static/leaflet-routing-machine-3.2.12/examples/Control.Geocoder.js"></script>
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/src/MarkerCluster.js"></script>
+    <link rel="stylesheet" href="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css">
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="../static/Leaflet.markercluster-1.4.1/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster-src.js"></script>
+    <script src="../static/js/_0.js"></script>
+    <link rel="stylesheet" href="../static/src/L.Control.Sidebar.css">
+    <script src="../static/src/L.Control.Sidebar.js"></script>
+    <script src="../static/js/L.Control.Layers.Tree.js"></script>
+    <link rel="stylesheet" href="../static/css/L.Control.Layers.Tree.css">
+    <link rel="icon" type="image/png" href="../static/images/icon/MonumentIcon.svg"/>
+    <script src="../static/js/slides.js"></script>
+    <link rel="stylesheet" href="../static/css/slider.css">
+    <link rel="stylesheet" href="../static/Leaflet.defaultextent-master/dist/leaflet.defaultextent.css">
+    <script src="../static/Leaflet.defaultextent-master/dist/leaflet.defaultextent.js"></script>
+    <link rel="stylesheet" href="../static/src/leaflet-search.css" />
+    <script src="../static/Leaflet.Dialog-master/Leaflet.Dialog.js"></script>
+    <link rel="stylesheet" href="../static/Leaflet.Dialog-master/Leaflet.Dialog.css">
+    <link rel="stylesheet" href="../static/Leaflet.Legend-master/src/leaflet.legend.css">
+    <script src="../static/Leaflet.Legend-master/src/leaflet.legend.js"></script>
+    <link rel="stylesheet" href="../static/css/preloader.css">
+    <script src="../static/js/leaflet.markercluster.layersupport.js"></script>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/leaflet.textpath.js"></script>
+    <script src="../static/Leaflet.EasyButton-master/src/easy-button.js"></script>
+    <script src="../static/src/leaflet-search.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap" rel="stylesheet">
+    <script src="../static/js/geolet.js"></script>
+    <script src="../static/leaflet-locatecontrol-gh-pages/src/L.Control.Locate.js"></script>
+    <link rel="stylesheet" href="../static/leaflet-locatecontrol-gh-pages/dist/L.Control.Locate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="../static/js/Ufa.js"></script>
+    <script src="../static/js/demskiy.js"></script>
+    <script src="../static/js/kalininskiy.js"></script>
+    <script src="../static/js/kirovskiy.js"></script>
+    <script src="../static/js/leninskiy.js"></script>
+    <script src="../static/js/oktyabrskiy.js"></script>
+    <script src="../static/js/oktyabrskiy2.js"></script>
+    <script src="../static/js/oktyabrskiyfull.js"></script>
+    <script src="../static/js/ordzhonikidzevskiy.js"></script>
+    <script src="../static/js/sovetskiy.js"></script>
+</head>
+<body>
+
+<div id="map">
+    <span class="leaflet-layerstree-closed leaflet-layerstree-hide"><img src="../static/images/icon/MonumentIconClick.png"></span>
+    <a href="/">
+        <button id="backButton">На главную</button>
+    </a> 
+</div>
+
+<script src="../static/map1945.js"></script>
+<div id="sidebar"> </div>
+<div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path fill="currentColor"
+        d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+      </path>
+    </svg>
+</div>
+
+<script>
+    async function load_memorialcomplex(pathpam) {
+    const response = await fetch(pathpam)
+    const geojson = await response.json()
+    return geojson
+}
+
+//ждем окончания пред функции
+async function render_markers() {
+
+    //-----------------ИКОНКА ЗКАГРУЗКИ САЙТА-------------------//
+    
+    const memorialcomplex = await load_memorialcomplex('/api/memorialcomplex/');
+    const eternalflame = await load_memorialcomplex('/api/eternalflame/');
+    const bust = await load_memorialcomplex('/api/bust/');
+    const steles_o = await load_memorialcomplex('/api/steles_o/');
+    const monument_s = await load_memorialcomplex('/api/monument_s/');
+    const graffiti = await load_memorialcomplex('/api/graffiti/');
+    const relief = await load_memorialcomplex('/api/relief/');
+    const csign = await load_memorialcomplex('/api/csign/');
+	var arr1 = [memorialcomplex, eternalflame, bust, steles_o, monument_s, graffiti, relief, csign];
+
+    //-----------------УБРАТЬ ИКОНКУ-------------------//
+	return arr1
+}
+var dialog3 = L.control.dialog({size:[1000,600],anchor:[250,250],position:"topleft"})
+var buttoncontent='<button class="infoButton" onclick='+'bustinfo_click("Мемкомплекс")>'+'МК</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Вечныеогни")>'+'Вечные огни</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Бюсты")>'+'Бюсты</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Стеллы")>'+'Стеллы</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Памятники")>'+'Памятники</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Граффити")>'+'Граффити</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Рельефы")>'+'Рельефы</button>'
+    +'<button class="infoButton" onclick='+'bustinfo_click("Памятныйзнак")>'+'Памятные знаки</button>'
+    +'<a href="/velikaya_otechestvennaya_voina_1945_objects_info"><button class="infoButton">Переход</button></a>';
+render_markers().then(arr1 => {
+    memorialcomplex=arr1[0];
+    eternalflame=arr1[1];
+    bust=arr1[2];
+    steles_o=arr1[3];
+    monument_s=arr1[4];
+    graffiti=arr1[5];
+    relief=arr1[6];
+    csign=arr1[7];
+    mapvers=document.getElementsByClassName('leaflet-control-dialog-contents');
+    dialog3.setContent('<H2>Информация по всем обьектам</H2>' + buttoncontent ).addTo(map);
+    dialog3.setLocation([0,(window.innerWidth-mapvers[0].clientWidth)/2]);
+    //-----------------ТАБЛИЧА END-------------------//
+    
+    
+    var stateChangingButton = L.easyButton({
+        states: [{
+            stateName: 'zoom-to-forest', // name the state
+            icon: '<img src="../static/images/table.png" width="16" height="16">', // and define its properties
+            title: 'Информация об объектах',
+            alert: 'Информация об объектах',
+            onClick: function(btn, map) {       // and its callback
+                // change state on click!
+                dialog3.open();
+                //window.location.href="/velikaya_otechestvennaya_voina_1945_objects_info/";
+
+            }, 
+        }]
+    }).addTo(map);
+});
+    document.getElementsByClassName( 'leaflet-control-attribution' )[0].style.display = 'none';
+//-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    //-----------------ЗАГРУЗОЧНЫЙ_ЭКРАН-------------------//
+    window.onload = function () {
+        document.body.classList.add('loaded_hiding');
+        window.setTimeout(function () {
+          document.body.classList.add('loaded');
+          document.body.classList.remove('loaded_hiding');
+        }, 500);
+      }
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    //-----------------КНОПКА_ИНФОРМАЦИИ-------------------//
+    var stateChangingButton = L.easyButton({
+        states: [{
+            stateName: 'zoom-to-forest',        // name the state
+            icon:      '<img src="../static/images/32879-info-clipart.png" width="16" height="16">',               // and define its properties
+            title:     'Информация о карте',
+            alert: 'Информация о карте', // like its title
+            onClick: function(btn, map) {       // and its callback
+
+                // change state on click!
+                openSidebarInfo();
+            },
+        }]
+    }).addTo(map);
+
+    
+    function openSidebarInfo() {
+        sidebar.toggle();
+        var popupContentReg=' ';
+        //-----------------ДОБАВИТЬ_МЕДИА?-------------------//
+        sidebar.setContent('<h2>'+ "Интерактивная карта «Исторического наследия Республики Башкортостан в Великой Отечественной войне»" + '</h2>' +
+        "<p>Посвящена выдающейся станице её истории, а именно победе в Великой Отечественной войне. На карте отображены места, связанные с мемориальной практикой - мемориальные комплексы, вечные огни, бюсты, стелы (обелиски), памятники (скульптуры), граффити, рельефы и памятные знаки."
+        + '<br>' + "Для удобства на карте имеется: "
+        + '<br>' + "-легенда, отображающая все объекты, присутствующие на карте;"
+        + '<br>' + "-фильтр, позволяющий выбрать интересующие виды объектов;"
+        + '<br>' +"-поиск, позволяющий найти объекты по различным критериям(названию, типу объектов, фамилии архитектора).");
+    }
+
+    //------------------------------------//
+    //------------------------------------//
+    //------------------------------------//
+    //------------------------------------//
+
+    function bustinfo_click(indegs){
+        
+        render_markers().then(arr1 => {
+            memorialcomplex=arr1[0];
+            eternalflame=arr1[1];
+            bust=arr1[2];
+            steles_o=arr1[3];
+            monument_s=arr1[4];
+            graffiti=arr1[5];
+            relief=arr1[6];
+            csign=arr1[7];
+            
+            
+ //-----------------ТАБЛИЧАКОНТЕНТ-------------------//
+    if(indegs==="Мемкомплекс")
+    numer=0;
+    if(indegs==="Вечныеогни")
+    numer=1;
+    else if(indegs==="Бюсты")
+    numer=2;
+    else if(indegs==="Стеллы")
+    numer=3;
+    else if(indegs==="Памятники")
+    numer=4;
+    else if(indegs==="Граффити")
+    numer=5;
+    else if(indegs==="Рельефы")
+    numer=6;
+    else if(indegs==="Памятныйзнак")
+    numer=7;
+    rowcontent = '';
+    for(i =0;i<arr1[numer].features.length;i++){
+        rowcontent+='<tr>'+'<td>'+arr1[numer].features[i].properties.name +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.place +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.date +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.author +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.description +'</td>'
+
+        +'<td>'+arr1[numer].features[i].properties.who_opened +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.area_around +'</td>'
+        +'<td>'+arr1[numer].features[i].properties.security_level+'</td>'
+        +'<td>'+arr1[numer].features[i].properties.binding +'</td>';
+        if(numer!=0)
+        rowcontent+='<td>'+arr1[numer].features[i].properties.material +'</td>';
+        rowcontent+='</tr>';
+    }
+    
+    var tablecontent='<table><tr><th>Название</th><th>Место</th><th>Дата</th><th>Автор</th><th>Описание</th><th>Кто открывал</th><th>Территория вокруг</th><th>Уровень охраны</th><th>Привязан к конкретной местности</th>';
+    if(numer!=0)
+        tablecontent+='<th>Материал</th>';
+    dialog3.setContent('<H2>Информация по всем обьектам</H2>' + buttoncontent
+    + tablecontent +'</tr>' + rowcontent)
+        })   
+    }
+    
+    function bustinfo_close(){
+        var dialog3 = L.control.dialog({size:[1000,600],anchor:[250,250],position:"topleft"})
+        .dialog3.setContent('<H2>Информация по всем обьектам</H2>')
+    }
+
+    
+    function makeFullScreen() {
+        var divObj = document.getElementsByClassName("Image");
+        divObj[slideIndex-1].requestFullscreen();
+
+    }
+    
+    
+    function marshend(targeter)
+    {
+        
+        //leaflet-routing-container leaflet-bar leaflet-control
+        endpoint=targeter.feature.properties.name;
+        longend=targeter.feature.geometry.coordinates[0];
+        latend=targeter.feature.geometry.coordinates[1];
+    
+        //console.log(map.Routing);
+        
+            map.removeControl(routingControl);
+            //window.waypoints=window.waypoints.split("/");
+            window.waypoints[window.waypoints.length]=L.latLng(targeter.feature.geometry.coordinates[1],targeter.feature.geometry.coordinates[0])
+            routingControl.setWaypoints(window.waypoints);
+            console.log(window.waypoints);
+            routingControl.addTo(map);
+        
+    }
+
+    var sidebar = L.control.sidebar('sidebar', {
+        position: 'left'
+    });
+    var home=document.getElementsByClassName('leaflet-control-defaultextent-toggle');
+    getDataAddMarkers = function( {label, value, map, exclamation} ) {
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+    };
+    map.addControl(sidebar);
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    //-----------------ИЗМЕНЕНИЕ_ИКОНОК_ПРИ_НАЖАТИИ-------------------//
+    function chic(){
+
+        var testElements = document.getElementsByClassName('leaflet-marker-icon');
+        for(var j=0;j<testElements.length;j++){
+            if(testElements[j].src!=undefined){
+            if(testElements[j].src.match("../static/images/icon1945/MemorialComplexIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/MemorialComplexIcon.svg";
+            if(testElements[j].src.match("../static/images/icon1945/EternalFlameIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/EternalFlameIcon.svg"; 
+            if(testElements[j].src.match("../static/images/icon1945/BustIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/BustIcon.svg";  
+            if(testElements[j].src.match("../static/images/icon1945/Steles_oIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/Steles_oIcon.svg";  
+            if(testElements[j].src.match("../static/images/icon1945/Monument_sIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/Monument_sIcon.svg";  
+            if(testElements[j].src.match("../static/images/icon1945/GraffitiIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/GraffitiIcon.svg";  
+            if(testElements[j].src.match("../static/images/icon1945/ReliefIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/ReliefIcon.svg";  
+            if(testElements[j].src.match("../static/images/icon1945/CsignIconClick.svg"))
+                testElements[j].src="../static/images/icon1945/CsignIcon.svg";      
+            }
+        }
+    };
+
+    map.on('click', function () {
+        sidebar.hide();
+        chic();
+    });
+    
+</script>
+</body>
+</html>

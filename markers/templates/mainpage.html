@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Военно-историческое наследие Республики Башкортостан</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap" rel="stylesheet">
+
+	<!-- Стили сайта -->
+	<link rel="stylesheet" href="../static/css/mainpage.css">
+</head>
+<body>
+    <header>
+        <div class="headercontainer">
+            <a href="" class="navbarlogo">
+                Военно-историческое наследие Республики Башкортостан
+            </a>
+            <nav>
+                <ul class="top-menu">
+                    <li><a href="/admin/">Администрирование</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="main">
+            <div class="card1812">
+                <div class="map1812fon">
+                    
+                </div>
+                <div class="map1812">
+                    <div class="map1812photo">
+    
+                    </div>
+                    <div class="map1812info">
+                        <div class="map1812nazvanie">
+                            <p>Память об Отечественной войне 1812 года</p>
+                        </div>
+        
+                        <div class="map1812opisanie">
+                            <p>Одной из выдающихся страниц исторического прошлого Башкирии было участие 20 башкирских пятисотенных полков в Отечественной войне 1812 г. и Заграничном походе 1813–1814 гг. 
+                                <br>Популяризация и доступность – важный шаг в сохранении наследия. В рамках сохранения памяти историко-культурного наследия была создана данная интерактивная карта, содержащая в себе мемориальные объекты, связанные с памятью об участии башкир в войне 1812 года, а также места сборов и маршруты передвижения конных полков. 
+                                 </p>
+                        </div>
+                        <div class="map1812footer">
+                            <a href="/otechestvennaya_voina_1812/" class="btn">Перейти на карту</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card1945">
+                <div class="map1945fon">
+                    
+                </div>
+                <div class="map1945">
+                    <div class="map1945photo">
+    
+                    </div>
+                    <div class="map1945info">
+                        <div class="map1945nazvanie">
+                            <p>Память о Великой Отечественной войне</p>
+                        </div>
+        
+                        <div class="map1945opisanie">
+                            <p>Наследие Великой Отечественной войны окружает жителей Башкирии
+                                практически повсеместно: в каждом населенном пункте, где велись боевые
+                                действия или жили герои, есть монумент, стела или памятная доска. 
+                                <br>В рамках сохранения памяти историко-культурного наследия была создана данная интерактивная карта, содержащая в себе мемориальные объекты, связанные с памятью об участии башкир в Великой Отечественной войне. Популяризация и доступность – важный шаг в сохранении наследия, чтобы каждый гражданин Республики Башкортостан, мог приобщится к истории своей земли, своего народа.
+                                 </p>
+                        </div>
+                        <div class="map1945footer">
+                            <a onclick="anim();" class="btn">Перейти на карту</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<footer>
+
+    </footer>
+    <script>    
+        function anim(){
+            console.log('JavaScript in a link!');
+            document.querySelector(".card1812").classList.toggle("block-spin");
+            document.querySelector(".card1945").classList.toggle("block-spin2");
+            //var child = document.getElementsByClassName("card1812 block-spin")[0];
+            //var parent = document.getElementsByClassName("main")[0];
+            //parent.removeChild(child);
+              //setTimeout(anim, 3000)
+            //window.location.href="/velikaya_otechestvennaya_voina_1945/";
+            setTimeout(anim2, 800);
+        }
+        function anim2(){
+            window.location.href="/velikaya_otechestvennaya_voina_1945/";
+        }
+    </script>
+</body>
+</html>

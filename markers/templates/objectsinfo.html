@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Военно-историческое наследие Республики Башкортостан</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400&display=swap" rel="stylesheet">
+
+	<!-- Стили сайта -->
+	
+    <link rel="stylesheet" href="../static/css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/objectsinfo.css">
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="../static/js/leaflet.js"></script>
+    <link rel="icon" type="image/png" href="../static/images/icon/MonumentIcon.svg"/>
+    
+</head>
+<body onload="bustinfo_click('Памятники')">
+    <header>
+        <div class="headercontainer">
+            <a href="/" class="navbarlogo">
+                Военно-историческое наследие Республики Башкортостан
+            </a>
+            <nav>
+                <ul class="top-menu">
+                    <li><a href="/admin/">Администрирование</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="main">
+            <div class="name">
+                <h1>Информация по всем объектам</h1>
+            </div>
+            <div class="butmain">
+                
+                <button class="infoButton" onclick='bustinfo_click("Мемкомплекс")'>МК</button>
+                <button class="infoButton" onclick='bustinfo_click("Вечныеогни")'>Вечные огни</button>
+                <button class="infoButton" onclick='bustinfo_click("Бюсты")'>Бюсты</button>
+                <button class="infoButton" onclick='bustinfo_click("Стеллы")'>Стеллы</button>
+                <button class="infoButton" onclick='bustinfo_click("Памятники")'>Памятники</button>
+                <button class="infoButton" onclick='bustinfo_click("Граффити")'>Граффити</button>
+                <button class="infoButton" onclick='bustinfo_click("Рельефы")'>Рельефы</button>
+                <button class="infoButton" onclick='bustinfo_click("Памятныйзнак")'>Памятные знаки</button>
+                <br>
+                </div>
+            <div class="hoomain">
+                
+                <br><table id="tabloo"><tr><th>Название</th><th>Место</th><th>Дата</th><th>Автор</th><th>Описание</th><th>Кто открывал</th><th>Территория вокруг</th><th>Уровень охраны</th><th>Привязан к конкретной местности</th>
+            </div>
+        </div>
+	</div>
+	<footer>
+
+    </footer>
+    <script>
+        var table = document.getElementById("tabloo");
+        async function load_memorialcomplex(pathpam) {
+        const response = await fetch(pathpam)
+        const geojson = await response.json()
+        return geojson
+    }
+
+        //ждем окончания пред функции
+        async function render_markers() {
+
+            //-----------------ИКОНКА ЗКАГРУЗКИ САЙТА-------------------//
+            
+            const memorialcomplex = await load_memorialcomplex('/api/memorialcomplex/');
+            const eternalflame = await load_memorialcomplex('/api/eternalflame/');
+            const bust = await load_memorialcomplex('/api/bust/');
+            const steles_o = await load_memorialcomplex('/api/steles_o/');
+            const monument_s = await load_memorialcomplex('/api/monument_s/');
+            const graffiti = await load_memorialcomplex('/api/graffiti/');
+            const relief = await load_memorialcomplex('/api/relief/');
+            const csign = await load_memorialcomplex('/api/csign/');
+            var arr1 = [memorialcomplex, eternalflame, bust, steles_o, monument_s, graffiti, relief, csign];
+
+            //-----------------УБРАТЬ ИКОНКУ-------------------//
+            return arr1
+        }
+
+        render_markers().then(arr1 => {
+            memorialcomplex=arr1[0];
+            eternalflame=arr1[1];
+            bust=arr1[2];
+            steles_o=arr1[3];
+            monument_s=arr1[4];
+            graffiti=arr1[5];
+            relief=arr1[6];
+            csign=arr1[7];
+            //-----------------ТАБЛИЧА END-------------------//
+            
+        });
+            function bustinfo_click(indegs){
+        render_markers().then(arr1 => {
+            memorialcomplex=arr1[0];
+            eternalflame=arr1[1];
+            bust=arr1[2];
+            steles_o=arr1[3];
+            monument_s=arr1[4];
+            graffiti=arr1[5];
+            relief=arr1[6];
+            csign=arr1[7];
+            
+            
+    //-----------------ТАБЛИЧАКОНТЕНТ-------------------//
+        if(indegs==="Мемкомплекс")
+        numer=0;
+        if(indegs==="Вечныеогни")
+        numer=1;
+        else if(indegs==="Бюсты")
+        numer=2;
+        else if(indegs==="Стеллы")
+        numer=3;
+        else if(indegs==="Памятники")
+        numer=4;
+        else if(indegs==="Граффити")
+        numer=5;
+        else if(indegs==="Рельефы")
+        numer=6;
+        else if(indegs==="Памятныйзнак")
+        numer=7;
+        rowcontent = '';
+        for(i =0;i<arr1[numer].features.length;i++){
+            
+            rowcontent+='<tr>'+'<td>'+arr1[numer].features[i].properties.name +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.place +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.date +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.author +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.description +'</td>'
+
+            +'<td>'+arr1[numer].features[i].properties.who_opened +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.area_around +'</td>'
+            +'<td>'+arr1[numer].features[i].properties.security_level+'</td>'
+            +'<td>'+arr1[numer].features[i].properties.binding +'</td>';
+            if(numer!=0)
+            rowcontent+='<td>'+arr1[numer].features[i].properties.material +'</td>';
+            rowcontent+='</tr>';
+        }
+
+        if(numer!=0)
+            table.innerHTML='<tr><th>Название</th><th>Место</th><th>Дата</th><th>Автор</th><th>Описание</th><th>Кто открывал</th><th>Территория вокруг</th><th>Уровень охраны</th><th>Привязан к конкретной местности</th><th>Материал</th></tr>';
+        else 
+            table.innerHTML='<tr><th>Название</th><th>Место</th><th>Дата</th><th>Автор</th><th>Описание</th><th>Кто открывал</th><th>Территория вокруг</th><th>Уровень охраны</th><th>Привязан к конкретной местности</th></tr>';
+        table.innerHTML+='</tr>' + rowcontent;
+            })   
+        }
+    </script>
+</body>
+</html>

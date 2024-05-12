@@ -1,0 +1,9 @@
+1)layerstree js collapse expand updateselallcheckbox
+if(sidebar)
+sidebar.hide();
+2)l.control.slidebar.css 84 22
+3)l.control.slidebar.js 5 удалить button
+4)const memorialIcon = new Icon({iconUrl: 'images/tourist_monument_click.png',iconSize: [38,38]}),
+5).leaflet-control-layers-expanded{
+    background-color: #3388ff;
+} цвет этой хуйни блядь в доту хочу пиздец я ебал

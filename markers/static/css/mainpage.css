@@ -1,0 +1,282 @@
+/**
+ * Базовые стили для всего сайта
+ */
+html{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	font-family: 'Bitter', serif;
+	line-height: 1.4;
+}
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #000;
+	min-width: 320px;
+	overflow-x: hidden;
+	height: auto;
+	background-image: url("../images/fonwar.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	backdrop-filter: blur(5px);
+}
+
+
+
+.wrapper {
+	margin-right: auto; /* 1 */
+	margin-left:  auto; /* 1 */
+	max-width: 1100px; /* 2 */
+	height: 910px;
+	padding-right: 10px; /* 3 */
+	padding-left:  10px; /* 3 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.header {
+	width: 100%;
+    height: 90px;
+    align-items: center;
+}
+
+.headercontainer{
+    width: 100%;
+    height: 90px;
+	background-color: #005e8c;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.nav a{
+    text-decoration: none;
+}
+
+.nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+.nav li {
+	list-style-position: inside;
+	padding: 10px;
+}
+
+.top-menu{
+    list-style-type: none;
+    padding-left: 0;
+}
+.top-menu li {
+    display: inline-block;
+
+}
+
+.top-menu li a{
+    display: inline-block;
+    color: white;
+    opacity: 0.6;
+    text-decoration: none;
+    padding: 10px;
+    transition: all .07s ease-in-out;
+}
+
+.top-menu li a:hover{
+    opacity: 1;
+}
+
+.navbarlogo{
+    font-weight: 700;
+    font-size: 26px;
+    text-decoration: none;
+    color: white;
+    transition: all .07s ease-in-out;
+}
+
+.navbarlogo:hover{
+	color: rgba(255, 255, 255, 0.877);
+}
+
+.main{
+	position: relative;
+	background-color: rgb(245, 244, 244);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border-radius: 0 0 20px 20px;
+	margin-bottom: 20px;
+}
+
+.card1812, .card1945{
+	width: 100%;
+	height: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.block-spin{
+	animation: fade 1s ease forwards;
+}
+
+@keyframes fade {
+	from {
+	  opacity: 1;
+	  
+	  visibility: visible;
+	}
+	to {
+	  opacity: 0;
+	  transform:translatex(50%);
+	  visibility: hidden;
+	}
+}
+
+.block-spin2{
+	animation: fade2 1s ease forwards;
+}
+@keyframes fade2 {
+	from {
+	  
+	  visibility: visible;
+	}
+	to {
+	  transform:translatex(-50%);
+	}
+}
+
+.map1812, .map1945{
+	width: 400px;
+	height: 800px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	z-index: 100;
+}
+
+.map1812fon, .map1945fon{
+	position: absolute;
+	opacity: 1;
+	width: 400px;
+	height: 800px;
+	border-radius: 20px;
+	transform:rotate(5deg);
+	background-color: #006647;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map1812photo{
+	width: 100%;
+	height: 300px;
+	background-image: url("../images/Photos/gis1812photo.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	border-radius: 20px 20px 0 0;
+}
+
+.map1945photo{
+	width: 100%;
+	height: 300px;
+	background-image: url("../images/Photos/gisvovphoto.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	border-radius: 20px 20px 0 0;
+}
+
+.map1812info, .map1945info{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	background-color: white;
+	border-radius: 0 0 20px 20px;
+}
+
+.map1812nazvanie, .map1945nazvanie{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	text-align: center;
+}
+
+.map1812nazvanie p, .map1945nazvanie p{
+	font-size: 22px;
+	font-weight: bold;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.map1812nazvanie h2, .map1945nazvanie h2{
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.map1812opisanie, .map1945opisanie{
+    width: 100%;
+    height: 300px;
+	display: flex;
+	align-items: center;
+    text-align: justify;
+	color: rgb(89, 92, 97);
+}
+
+.map1812opisanie p, .map1945opisanie p{
+    padding-left: 15px;
+	padding-right: 15px;
+	font-size: 15px;
+}
+
+.map1812info a, .map1945info a{
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    height: 25px;
+    background-color: #005e8c;
+    text-decoration: none;
+    color: white;
+    transition: all .09s ease-in-out;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+}
+
+.map1812info a:hover, .map1945info a:hover{
+    background-color: #006647;
+	color : white;
+	box-shadow: 0px 0px 20px 1px #017bb8;
+	transform: scale(1.05,1.05);
+	outline: 2px solid #026fa6; /* внутренняя рамка */
+}
+
+.map1812footer, .map1945footer{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.map1812footer a, .map1945footer a{
+	cursor: pointer;
+}

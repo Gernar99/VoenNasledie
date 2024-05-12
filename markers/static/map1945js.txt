@@ -1,0 +1,133 @@
+//-----------------ИНИЦИАЛИЗАЦИЯ_КАРТЫ-------------------//
+//-----------------ИНИЦИАЛИЗАЦИЯ_КАРТЫ-------------------//
+//-----------------ИНИЦИАЛИЗАЦИЯ_КАРТЫ-------------------//
+//-----------------ИНИЦИАЛИЗАЦИЯ_КАРТЫ-------------------//
+var mbUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+//-----------------обьявление_интерактивной_и_современной_карты-------------------//
+
+var real = L.tileLayer(mbUrl);
+var map = L.map('map', {
+    center: [54.320310, 56.457382],
+    zoom: 8,
+    layers: [real],
+    defaultExtentControl: true,
+    zoomControl: true,
+});
+//-----------------ЗАГРУЗКА_С_JSON-------------------//
+//-----------------ЗАГРУЗКА_С_JSON-------------------//
+//-----------------ЗАГРУЗКА_С_JSON-------------------//
+//-----------------ЗАГРУЗКА_С_JSON-------------------//
+async function load_municipal() {
+    const response = await fetch('/api/municipals/')
+    const geojson = await response.json()
+    return geojson
+}
+
+async function render_markers() {
+
+    //-----------------ИКОНКА ЗКАГРУЗКИ САЙТА-------------------//
+
+    const municipal = await load_municipal();
+	var arr = [municipal];
+
+    //-----------------УБРАТЬ ИКОНКУ-------------------//
+	return arr
+}
+
+render_markers().then(arr => {
+    municipal=arr[0];
+    //-----------------СОЗДАНИЕ_ЭКСТЕНТА_КАРТЫ-------------------//
+//-----------------СОЗДАНИЕ_ЭКСТЕНТА_КАРТЫ-------------------//
+//-----------------СОЗДАНИЕ_ЭКСТЕНТА_КАРТЫ-------------------//
+//-----------------СОЗДАНИЕ_ЭКСТЕНТА_КАРТЫ-------------------//
+//var northWest = L.latLng(55.088755, 55.280588),
+//southEast = L.latLng(54.299684, 56.791469);
+//var bounds = L.latLngBounds(northWest, southEast);
+//map.setMaxBounds(bounds);
+//map.on('drag', function() {
+//  map.panInsideBounds(bounds, { animate: false });
+//});
+//map.options.minZoom = 10;
+
+//-----------------СТАНДАРТНЫЕ_ДАННЫЕ-------------------//
+//-----------------СТАНДАРТНЫЕ_ДАННЫЕ-------------------//
+//-----------------СТАНДАРТНЫЕ_ДАННЫЕ-------------------//
+//-----------------СТАНДАРТНЫЕ_ДАННЫЕ-------------------//
+
+var admRB = L.geoJSON(municipal, {
+    style: {
+        color: '#008000',
+        opacity: 0.5
+    },
+    onEachFeature: LabelEachFeature
+}).addTo(map);
+    //-----------------ОТКРЫТИЕ_ПАНЕЛИ-------------------//
+    //-----------------ОТКРЫТИЕ_ПАНЕЛИ-------------------//
+    //-----------------ОТКРЫТИЕ_ПАНЕЛИ-------------------//
+    //-----------------ОТКРЫТИЕ_ПАНЕЛИ-------------------//
+function LabelEachFeature(feature, layer) {
+    layer.on('click',function(e){
+        map.setView(e.latlng, 9);
+        openSidebarMunicipal(e);
+    }),
+    map.on('zoomend', function () {
+        if (map.getZoom() > 8 && feature.id!="4") {
+            layer.bindTooltip(feature.properties.name, {permanent: true, direction: "center", setZIndex: 5})
+        }
+        else if(feature.id=="4" && map.getZoom() <= 8){
+            layer.bindTooltip(feature.properties.name,{permanent: true, direction: "center", setZIndex: 5})
+        }
+        else {
+            layer.unbindTooltip();
+        }
+    }),
+    map.zoomOut(1);
+}
+//-----------------ФИЛЬТР-------------------//
+    //-----------------ФИЛЬТР-------------------//
+    //-----------------ФИЛЬТР-------------------//
+    //-----------------ФИЛЬТР-------------------//
+	var baseTree = {
+        label: 'Слои',
+
+        children: [
+            {label: '<img src="../static/images/icon/CityIcon.svg" class="imgtree"> Республика Башкортостан', layer: real},
+        ]
+    };
+    
+    var overlaysTree = {
+        label: 'Объекты',
+        selectAllCheckbox: true,
+        children: [
+            {
+                label: 'Территория Республики Башкортостан', layer: admRB,
+            },
+        ]
+    };
+
+    var lay = L.control.layers.tree(baseTree, overlaysTree,
+        {
+            namedToggle: false,
+            selectorBack: false,
+            collapseAll: 'Свернуть все',
+            expandAll: 'Раскрыть все',
+            collapsed: true,
+        });
+    lay.addTo(map);
+
+    //-----------------ЛЕГЕНДА-------------------//
+    //-----------------ЛЕГЕНДА-------------------//
+    //-----------------ЛЕГЕНДА-------------------//
+    //-----------------ЛЕГЕНДА-------------------//
+    L.control.Legend({
+        position: "bottomright",
+        title: "Легенда",
+        legends: [
+        {
+            label: "Монумент",
+            type: "image",
+            url: "../static/images/icon/MonumentIcon.svg",
+        }
+        ]
+    }).addTo(map);
+});
