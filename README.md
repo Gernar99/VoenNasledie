@@ -37,13 +37,17 @@ python manage.py runserver
 venv\scripts\activate
 python manage.py runserver
 
-ИНТЕРФЕЙС
+
 ГЛАВНАЯ СТРАНИЦА
 ![image](https://github.com/user-attachments/assets/24d18a0f-e28a-420d-9a4b-b187e9876443)
 КАРТА
 ![image](https://github.com/user-attachments/assets/fbdecdf3-b99f-45fe-8b24-ae0c6129a54a)
+ВЫБОР ОБЬЕКТА НА КАРТЕ
 ![image](https://github.com/user-attachments/assets/33826265-4f7e-4e70-ab01-413bf08d8da1)
+АВТОМАТИЧЕСКОЕ ПОСТРОЕНИЕ МАРШРУТА(готовая библиотека, но изменена под нужды)
 ![image](https://github.com/user-attachments/assets/4fb42d20-256f-42e6-9fa0-faf9a356f0dd)
+СТРАНИЦА С ТАБЛИЧНОЙ ИНФОРМАЦИЕЙ
 ![image](https://github.com/user-attachments/assets/c66d0934-2718-45e0-9a32-1936193c90a9)
+УПРАВЛЕНИЕ ВИДИМОСТЬЮ СЛОЕВ КАРТЫ
 ![image](https://github.com/user-attachments/assets/a4782683-e270-4218-a37b-abfa875cb494)
 
